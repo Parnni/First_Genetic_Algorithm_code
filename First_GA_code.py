@@ -86,8 +86,8 @@ def best_gene(iterations, parent, parent_fitness, target_string):
             sol_iteration, best_sol, fit_val = i, child, child_fitness
             print(f'Iteration no. {sol_iteration}')
             print(f'Best solution is "{best_sol}" with fitness value {fit_val}.')
-            return fitness_list
             
+            return fitness_list
             break
 
         child = mutate(parent)
