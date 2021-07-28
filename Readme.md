@@ -1,11 +1,12 @@
 # Genetic Algorithm.
 
-This is my first step in Genetic Algorithm.
-In this project, the code tries to guess the input string
-and prints the best possible guess.
+Guessing numbers with our typical python code is no longer fun.<br>
+How about we use *genetic algorithm* to guess?
+and why numbers? let's use strings instead.
+
+In this project, I am developing a genetic algorithm to guess the given string.
 
 ## Further improvements.
-- Cleaner and readable code.
-- Include unit tests.
-- Making this code as a class.
-- Deploying it on Flask.
+- Include numbers and more punctuations.
+- Include **unit tests.**
+- Deploying **it on Flask.**

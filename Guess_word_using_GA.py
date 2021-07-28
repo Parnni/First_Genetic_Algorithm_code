@@ -3,8 +3,10 @@ import random
 import string
 import matplotlib.pyplot as plt
 
+#-----------------------------------------------------------------------------------
 class guess():
-    ''''''
+    '''This class guesses given string.'''
+
     def __init__(self, target_string, iterations):
         '''Initializing
 
@@ -20,6 +22,7 @@ class guess():
         self.string_data = string.ascii_lowercase + string.ascii_uppercase \
                          + ' ' +  ',' + '!' + '.'
 
+#-----------------------------------------------------------------------------------
     # Creating a function for generating parents.
     def gen_parent(self):
         '''Generates a parent string.  
@@ -36,8 +39,9 @@ class guess():
         
         # Creating random parent.
         parent = random.sample(self.string_data, l)   
-        return ''.join(parent)                     
+        return ''.join(parent)    
 
+#-----------------------------------------------------------------------------------
     # Creating function to calculate fitness.
     def fitness(self, parent):
         '''Calculates fitness of the string.
@@ -50,6 +54,7 @@ class guess():
         return sum(1 for i in range(len(self.target_string)) \
                 if self.target_string[i] == parent[i])
 
+#-----------------------------------------------------------------------------------
     # Creating function for mutation.
     def mutate(self, parent):
         '''Mutates a value of the string.
@@ -73,6 +78,7 @@ class guess():
 
         return ''.join(child_list)
 
+#-----------------------------------------------------------------------------------
     # Creating function for best gene.
     def best_gene(self):
         '''Loop for finding best solution.
@@ -128,6 +134,7 @@ class guess():
                 return fitness_list
                 break
 
+#-----------------------------------------------------------------------------------
 # Running the model.
 if __name__ == '__main__':
     # Target string.
