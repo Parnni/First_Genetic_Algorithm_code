@@ -90,7 +90,7 @@ class guess():
 
         Returns
         -------
-        Best solution. 
+        Finds and returns the best solution. 
         '''
         # Parent data.
         parent = self.gen_parent()
