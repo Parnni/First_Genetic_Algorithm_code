@@ -1,17 +1,21 @@
+'''Class for guessing class.'''
+
 # Importing modules.
 import random
 import string
 import matplotlib.pyplot as plt
 
-#-----------------------------------------------------------------------------------
 class guess():
     '''This class guesses given string.'''
 
     def __init__(self, target_string, iterations):
-        '''Initializing
+        '''Initializing the paramters.
 
-           Inputs - 1. target_string.
-                    2. number of iterations.
+        Parameters
+        ----------
+        target_string: The string that needs to be guessed.
+        iterations: Number of iterations for calculating the
+                    guessed value.
         '''
         self.iterations = iterations
         self.target_string = target_string
@@ -22,14 +26,9 @@ class guess():
         self.string_data = string.ascii_lowercase + string.ascii_uppercase \
                          + ' ' +  ',' + '!' + '.'
 
-#-----------------------------------------------------------------------------------
     # Creating a function for generating parents.
     def gen_parent(self):
-        '''Generates a parent string.  
-           Input  - 1. Population data.
-                    2. Target data.
-           Output - Returns a randomly generated string with size 
-                    equal to the target data.
+        '''Generates a parent string. 
         '''  
         # Length of target string.
         l = len(self.target_string)
@@ -41,27 +40,34 @@ class guess():
         parent = random.sample(self.string_data, l)   
         return ''.join(parent)    
 
-#-----------------------------------------------------------------------------------
     # Creating function to calculate fitness.
     def fitness(self, parent):
         '''Calculates fitness of the string.
 
-           Input  - 1. Randomly generated string. 
-                    2. Target data.
-           Output - Returns fitness value of the randomly generated string
-                    by comparing it with target data.
+        Parameters
+        ----------
+        parent: Randomly generated string.
+
+        Returns
+        -------
+        Returns fitness value of the randomly generated string
+        by comparing it with target data.
         '''
         return sum(1 for i in range(len(self.target_string)) \
                 if self.target_string[i] == parent[i])
 
-#-----------------------------------------------------------------------------------
     # Creating function for mutation.
     def mutate(self, parent):
         '''Mutates a value of the string.
 
-           Input  - Randomly generated string.
-           Output - Returns mutated string after performing one-point
-                    crossover mutation.
+        Parameters
+        ----------
+        parent: Randomly generated string.
+
+        Returns
+        -------
+        Returns mutated string after performing one-point
+        crossover mutation.
         '''
         # Selecting a random index for mutation.
         index = random.randrange(0, len(parent))
@@ -78,16 +84,13 @@ class guess():
 
         return ''.join(child_list)
 
-#-----------------------------------------------------------------------------------
     # Creating function for best gene.
     def best_gene(self):
         '''Loop for finding best solution.
-        
-           Inputs - 1. Max iterations.
-                    2. Randomly generated string.
-                    3. Initial Fitness value.
-                    4. Target data.
-            Output - Best solution. 
+
+        Returns
+        -------
+        Best solution. 
         '''
         # Parent data.
         parent = self.gen_parent()
@@ -110,7 +113,7 @@ class guess():
                 print(f'Iteration no. {sol_iteration}')
                 print(f'Best solution is "{best_sol}" with fitness value {fit_val}.')
                 
-                return fitness_list
+                return fitness_list, best_sol
                 break
 
             child = self.mutate(parent)
@@ -128,13 +131,12 @@ class guess():
             if child_fitness >= len(self.target_string):
                 sol_iteration, best_sol, fit_val = i, child, child_fitness
                 print(f'Iteration no. {sol_iteration}')
-                print(f'Traget string is: "{self.target_string}"')
+                print(f'Target string is: "{self.target_string}"')
                 print(f'Best solution is: "{best_sol}"')
             
-                return fitness_list
+                return fitness_list, best_sol
                 break
 
-#-----------------------------------------------------------------------------------
 # Running the model.
 if __name__ == '__main__':
     # Target string.
@@ -147,7 +149,7 @@ if __name__ == '__main__':
                         iterations = iterations)
 
     # Finding the solution.
-    fitness_list = guess_class.best_gene()
+    fitness_list, best_solution = guess_class.best_gene()
 
     # Plotting the values.
     plt.plot(range(len(fitness_list)), fitness_list)
