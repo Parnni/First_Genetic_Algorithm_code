@@ -1,19 +1,25 @@
+# Importing modules.
 import unittest
 from Guess_word_using_GA import guess
 
-class string_test(unittest.TestCase):
+# Creating a test class.
+class guess_class_test(unittest.TestCase):
     '''Testing the Guess_word_using_GA class.'''
 
     def setUp(self):
-        # Assigning the values.
-        self.string_test = 'Hello'
+        # Arranging the values.
+        print('Arranging the values.')
+        self.string_test = 'Hello there.'
 
     def tearDown(self): 
         # Removing the values.
+        print('Tearing down the values.')
         self.string_test = ''
 
     def test1(self):
         '''Checks whether the strings are same or not.'''
+
+        print('Running test1.')
 
         # Number of iterations.
         iterations = 100000

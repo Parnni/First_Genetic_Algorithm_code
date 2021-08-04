@@ -1,4 +1,4 @@
-'''Class for guessing class.'''
+'''Class for guessing words.'''
 
 # Importing modules.
 import random
